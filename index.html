@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Electronic Watch</title>
+
+<style>
+  body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial;
+    transition: background 0.5s;
+  }
+
+  .watch {
+    background: black;
+    color: #22c55e;
+    padding: 30px 50px;
+    border-radius: 40px;
+    border: 5px solid #22c55e;
+    text-align: center;
+    transition: box-shadow 0.3s, transform 0.3s;
+    corner-shape: scoop;
+    box-shadow: 10px 10px 20px 4px #212121;
+  }
+  .watch:hover {
+    box-shadow: 4px 4px 30px #161616;
+    transform: scale(1.3);
+  }
+
+  .time {
+    font-size: 45px;
+  }
+
+  .date {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #a7f3d0;
+  }
+  h1 {
+    position: absolute;
+    top: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(59, 1, 1);
+  }
+</style>
+</head>
+
+<body>
+<h1>every sec your death is closer</h1>
+<div class="watch">
+  <div class="time" id="time"></div>
+  <div class="date" id="date"></div>
+</div>
+
+<script>
+function updateWatch() {
+
+
+  const now = new Date();
+
+ 
+  const time = now.toLocaleTimeString();
+
+
+  const date = now.toDateString();
+
+  document.getElementById("time").innerText = time;
+  document.getElementById("date").innerText = date;
+
+
+  const hour = now.getHours();
+
+  if (hour >= 6 && hour < 18) {
+    document.body.style.background = "linear-gradient(to right, #00ff00, #ff0000 , #0000ff)";
+  } else {
+    document.body.style.background = "linear-gradient(to right, #000000, #434343 , #000000)"; 
+  }
+}
+
+
+setInterval(updateWatch, 1000);
+
+
+updateWatch();
+</script>
+
+</body>
+</html>
